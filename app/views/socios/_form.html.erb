@@ -1,0 +1,39 @@
+<div class="well span11">
+<%= form_for(@socio) do |f| %>
+  <% if @socio.errors.any? %>
+    <div class="span8" style="background-color: #F2DEDE">
+		<h3><%= pluralize(@socio.errors.count, "erro(s) encontrado") %> no momento do cadastro:</h3>
+  		<ul>
+      		<% @socio.errors.full_messages.each do |msg| %>
+        		<li><%= msg %></li>
+      		<% end %>
+      	</ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="span3"><%= f.label :nome %></div>
+    <div><%= f.text_field :nome %></div>
+  </div>
+  <div class="row" style="padding-top: 30px;">
+    <div class="span3"><%= f.label 'Data de Nascimento' %></div>
+    <div><%= f.date_select :dataNascimento, :start_year => 1970, :order => [:day, :month, :year], :discard_year => true %></div>
+  </div>
+  <div class="row" style="padding-top: 30px;">
+    <div class="span3"><%= f.label :igreja %></div>
+    <div><%= f.select(:igreja, %w{IPJaguaribe IPFiladélfia IPMangabeira IPCArmas IPRioTinto IPTorrelândia IPCristo IPBayeux}, :include_blank => true) %></div>
+  </div>
+  <div class="row" style="padding-top: 30px;">
+    <div class="span3"><%= f.label :facebook %></div>
+    <div><%= f.text_field :facebook %></div>
+  </div>
+  <div class="row" style="padding-top: 30px;">
+    <div class="span3"><%= f.label :twitter %></div>
+    <div><%= f.text_field :twitter %></div>
+  </div>
+  <%= f.hidden_field :user_id %>
+  <div class="row" style="padding-top: 30px;">
+    <div class="span3 offset3"><%= f.submit 'Enviar', :class => 'btn medium primary' %></div>
+  </div>
+<% end %>
+</div>

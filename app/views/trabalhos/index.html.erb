@@ -1,0 +1,42 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	Ofertas de Trabalho
+    </li>
+</ul>
+<h1>Lista de Ofertas de Trabalho</h1>
+
+<table class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Contato</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trabalhos.each do |trabalho| %>
+  <tr>
+    <td><%= trabalho.nome %></td>
+    <td><%= trabalho.descricao %></td>
+    <td><%= trabalho.contato %></td>
+    <td><%= link_to 'Exibir', trabalho %></td>
+    <% if can? :edit, trabalho %>
+    	<td><%= link_to 'Editar', edit_trabalho_path(trabalho) %></td>
+	<% end -%>
+	<% if can? :destroy, trabalho %>
+    	<td><%= link_to 'Apagar', trabalho, confirm: 'Tem certeza?', method: :delete %></td>
+	<% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Adicionar Oferta de Trabalho', new_trabalho_path %>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Federação de Mocidade</title>
+  <%= stylesheet_link_tag    "bootstrap" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	<style type="text/css">
+	  body {
+	    padding-top: 60px;
+	  }
+	</style>
+</head>
+<body>
+<p class="alert"><%= alert %></p>
+<div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <%= link_to "FMocidade", root_path, :class => 'brand' %>
+          <ul class="nav">
+            <li class="active"><%= link_to "Início", root_path %></li>
+            <% if user_signed_in? %>
+				<li><%= link_to "Administração", administracao_index_path %></li>
+			<% end -%>
+          </ul>
+          <p class="pull-right">
+          	<% if user_signed_in? %>
+			  <span style="color: #B7B7B7">Seja bem vindo <%= current_user.email %></span> | 
+				<%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+			 <%else%>
+			  <%= link_to "Entrar", new_user_session_path %>
+			 <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div class="well">
+          <h5>Links</h5>
+          <ul>
+            <li><a href="http://www.ipb.org.br">IPB</a></li>
+            <li><a href="http://ump.org.br">UMP</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <%= yield %>
+        <footer>
+          <p>&copy; Federação de Mocidade <%= Date.today.year %></p>
+        </footer>
+      </div>
+    </div>
+
+</body>
+</html>

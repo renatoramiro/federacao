@@ -1,0 +1,19 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Ofertas de Trabalho", trabalhos_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	Adicionar
+    </li>
+</ul>
+<h1>Adicionar Oferta de Trabalho</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Voltar', trabalhos_path %>

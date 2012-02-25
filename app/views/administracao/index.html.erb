@@ -1,0 +1,16 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<%= link_to "Administração", administracao_index_path %>
+    </li>
+</ul>
+<h2> Administração</h2>
+<div class="well span10" align="center" style="margin-top: 10px;">
+	<div class="row span14">
+		<div class="span3"><%= link_to "Editar Conta", edit_user_registration_path, :class => 'btn small info' %></div>
+		<div class="span3"><%= link_to "Sócios", socios_path, :class => 'btn small' %></div>
+		<div class="span3"><%= link_to "Ofertas de Trabalho", trabalhos_path, :class => 'btn small' %></div>
+	</div>
+</div>

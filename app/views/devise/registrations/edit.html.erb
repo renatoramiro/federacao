@@ -1,0 +1,48 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<%= link_to "Editar Conta", edit_user_registration_path %>
+    </li>
+</ul>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+	<div class="well span10">
+	  <div class="row">
+	  	<div class="span3"><%= f.label :email %></div>
+	  	<div><%= f.email_field :email %></div>
+	  </div>
+	  <div class="row" style="padding-top: 10px;">
+	  	<div class="span3"><%= f.label :password %></div>
+	  	<div><%= f.password_field :password %></div>
+	  	<div class="span5 offset3" style="margin-left: 180px"><i>(deixe em branco se não quiser mudar)</i></div>
+	  </div>
+	
+	  <div class="row" style="margin-top: 10px;">
+	  	<div class="span3"><%= f.label :password_confirmation %></div>
+	  	<div><%= f.password_field :password_confirmation %></div>
+  	 </div>
+	
+	  <div class="row">
+	  	<div class="span3"><%= f.label :current_password %></div>
+	  	<div><%= f.password_field :current_password %></div>
+	  	<div class="span6 offset3" style="margin-left: 180px"><i>(precisamos da senha atual para confirmar as mudanças)</i></div>
+  	 </div>
+	
+	  <div class="row">
+	  	<div class="span3 offset3" style="padding-top: 20px; margin-left: 180px;"><%= f.submit "Update" %>
+  	  </div>
+  </div>
+  </div>
+<% end %>
+<div class="well span10">
+	<h3>Cancelar minha conta</h3>
+	<p>Não está contente? <%= link_to "Cancelar minha conta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+	<%= link_to "Voltar", :back %>	
+</div>

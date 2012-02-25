@@ -1,0 +1,46 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<%= link_to "Sócios", socios_path %>
+    </li>
+</ul>
+<h1>Lista de Sócios</h1>
+
+<table class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Data de Nascimento</th>
+    <th>Igreja</th>
+    <th>Facebook</th>
+    <th>Twitter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @socios.each do |socio| %>
+  <tr>
+    <td><%= socio.nome %></td>
+    <td><%= socio.dataNascimento.strftime('%d/%m') %></td>
+    <td><%= socio.igreja %></td>
+    <td><%= socio.facebook %></td>
+    <td><%= socio.twitter %></td>
+    <td><%= link_to 'Exibir', socio %></td>
+    <% if can? :edit, socio %>
+    	<td><%= link_to 'Editar', edit_socio_path(socio) %></td>
+	<% end -%>
+	<% if can? :destroy, socio %>
+    	<td><%= link_to 'Apagar', socio, confirm: 'Tem certeza?', method: :delete %></td>
+	<% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Adicionar Sócio', new_socio_path %>

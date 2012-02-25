@@ -1,0 +1,20 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	Aniversariantes
+    </li>
+</ul>
+<h2>Aniversariantes</h2>
+<p>Veja quem está aniversariando este mês.</p>
+<div class="well span12">
+	<% @socios.each do |socio| %>
+		<div class="row" style="padding-top: 10px">
+			<div class="span3"><%= socio.nome %></div>
+			<div class="span3"><%= socio.dataNascimento.strftime("%d-%m") %></div>
+			<div class="span3"><%= socio.facebook %></div>
+			<div class="span3"><%= socio.twitter %></div>
+		</div>
+	<% end -%>
+</div>

@@ -1,0 +1,29 @@
+<h2 class="offset4">Entrar no Sistema</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<div class="well span10">
+	  <div class="row">
+	  	<div class="span3"><%= f.label :email %></div> 
+	  	<div class="span3"><%= f.email_field :email %></div>
+	  </div>
+	
+	  <div class="row">
+	  	<div class="span3"><%= f.label :Senha %></div>
+	  	<div class="span3"><%= f.password_field :password %></div>
+	  </div>
+	
+	  <% if devise_mapping.rememberable? -%>
+	    <div class="row">
+	    	<div class="span3"><%= f.label 'Lembrar me' %></div>
+	    	<div class="span3" style="margin-top: 5px;"><%= f.check_box :remember_me %></div>
+		</div>
+	  <% end -%>
+	
+	  <div class="row">
+	  	<div class="span3 offset4"><%= f.submit "Entrar", :class => 'btn small info' %></div>
+	  </div>
+  </div>
+<% end %>
+
+<%= render "links" %>
+

@@ -1,0 +1,32 @@
+<div class="well span9">
+<%= form_for(@trabalho) do |f| %>
+  <% if @trabalho.errors.any? %>
+    <div class="span8" style="background-color: #F2DEDE">
+      <h2><%= pluralize(@trabalho.errors.count, "erro(s) encontrado") %> no momento do cadastro:</h2>
+
+      <ul>
+      <% @trabalho.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <p class="span3"><%= f.label :nome %></p>
+    <p><%= f.text_field :nome %></p>
+  </div>
+  <div class="row">
+    <p class="span3"><%= f.label 'Descrição' %></p>
+    <p><%= f.text_area :descricao, :rows => 10 %></p>
+  </div>
+  <div class="row">
+    <p class="span3"><%= f.label :contato %></p>
+    <p><%= f.text_field :contato %></p>
+  </div>
+  <%= f.hidden_field :user_id %>
+  <div class="row" style="padding-top: 30px;">
+    <p class="span3 offset3"><%= f.submit 'Enviar', :class => 'btn medium primary' %><p>
+  </div>
+<% end %>
+</div>

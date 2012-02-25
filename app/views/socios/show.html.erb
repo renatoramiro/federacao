@@ -1,0 +1,49 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Sócios", socios_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<%= link_to "Exibir" %>
+    </li>
+</ul>
+<% if !notice.nil? %>
+<div class="span4">
+	<p class="label success"><%= notice %></p>
+</div>
+<% end -%>
+<div class="well span9">
+<p>
+  <b>Nome:</b>
+  <%= @socio.nome %>
+</p>
+
+<p>
+  <b>Data de Nascimento:</b>
+  <%= @socio.dataNascimento.strftime('%d/%m') %>
+</p>
+
+<p>
+  <b>Igreja:</b>
+  <%= @socio.igreja %>
+</p>
+
+<p>
+  <b>Facebook:</b>
+  <%= @socio.facebook %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%= @socio.twitter %>
+</p>
+</div>
+<% if can? :edit, @socio %>
+	<%= link_to 'Editar', edit_socio_path(@socio) %> |
+<% end -%>
+<%= link_to 'Voltar', socios_path %>

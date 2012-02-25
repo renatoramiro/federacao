@@ -1,0 +1,20 @@
+<ul class="breadcrumb">
+    <li>
+    	<%= link_to "Início", root_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Administração", administracao_index_path %> <span class="divider">/</span>
+    </li>
+    <li>
+    	<%= link_to "Sócios", socios_path %> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<%= link_to "Editar" %>
+    </li>
+</ul>
+<h2>Editar sócio</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Exibir', @socio %> |
+<%= link_to 'Voltar', socios_path %>
